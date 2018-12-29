@@ -1,5 +1,7 @@
 const webpack = require('webpack');
 
+const itemsList = require('./stub/ads.json')
+
 module.exports = {
   entry: './src/index.js',
   module: {
@@ -56,8 +58,11 @@ module.exports = {
     contentBase: './dist',
     hot: true,
     port: 3000,
-    proxy: {
-      "/api": "http://localhost:3030/"
+    before: (app, server) => {
+      app.get('/api/items/', (req, res) => {
+        const page = req.query.page || 1
+        res.json({ data: itemsList[page-1] })
+      });
     }
   },
 };
