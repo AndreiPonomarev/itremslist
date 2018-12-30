@@ -59,6 +59,7 @@ module.exports = {
     contentBase: './dist',
     hot: true,
     port: 3000,
+    historyApiFallback: true,
     before: (app, server) => {
       app.get('/api/items/', (req, res) => {
         const page = req.query.page || 1
