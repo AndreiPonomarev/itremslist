@@ -1,36 +1,58 @@
 {
-  "name": "olx",
-  "version": "1.0.0",
-  "description": "",
-  "main": "src/index.js",
-  "scripts": {
-    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@babel/core": "~7.2.2",
-    "@babel/polyfill": "~7.0.0",
-    "@babel/preset-env": "~7.2.0",
-    "@babel/preset-react": "~7.0.0",
-    "babel-loader": "~8.0.4",
-    "css-loader": "~2.0.1",
-    "express": "~4.16.4",
-    "file-loader": "3.0.1",
-    "react-hot-loader": "~4.6.0",
-    "style-loader": "~0.23.1",
-    "url-loader": "1.1.2",
-    "webpack": "~4.27.1",
-    "webpack-cli": "~3.1.2",
-    "webpack-dev-server": "~3.1.10"
-  },
-  "dependencies": {
-    "mdbreact": "4.8.6",
-    "react": "16.7.0-alpha.2",
-    "react-dom": "16.7.0-alpha.2",
-    "react-router": "4.3.1",
-    "react-router-dom": "4.3.1"
-  }
+    "name": "olx",
+    "version": "1.0.0",
+    "description": "",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+        "test": "jest",
+        "test:watch": "jest --watch --updateSnapshot",
+        "test:coverage": "jest --coverage"
+    },
+    "jest": {
+        "setupFiles": [
+            "./jestsetup.js"
+        ],
+        "snapshotSerializers": [
+            "<rootDir>/node_modules/enzyme-to-json/serializer"
+        ],
+        "moduleNameMapper": {
+            "^.+\\.(css|scss)$": "identity-obj-proxy"
+        }
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/core": "7.2.2",
+        "@babel/polyfill": "7.0.0",
+        "@babel/preset-env": "7.2.0",
+        "@babel/preset-react": "7.0.0",
+        "babel-core": "^7.0.0-bridge.0",
+        "babel-jest": "23.6.0",
+        "babel-loader": "8.0.4",
+        "css-loader": "2.0.1",
+        "enzyme": "3.8.0",
+        "enzyme-adapter-react-16": "1.7.1",
+        "enzyme-to-json": "3.3.5",
+        "file-loader": "3.0.1",
+        "identity-obj-proxy": "3.0.0",
+        "jest": "23.6.0",
+        "react-addons-test-utils": "15.6.2",
+        "react-hot-loader": "4.6.0",
+        "react-test-renderer": "16.7.0-alpha.2",
+        "regenerator-runtime": "0.13.1",
+        "style-loader": "0.23.1",
+        "url-loader": "1.1.2",
+        "webpack": "4.27.1",
+        "webpack-cli": "3.1.2",
+        "webpack-dev-server": "3.1.10"
+    },
+    "dependencies": {
+        "mdbreact": "4.8.6",
+        "react": "16.7.0-alpha.2",
+        "react-dom": "16.7.0-alpha.2",
+        "react-router": "4.3.1",
+        "react-router-dom": "4.3.1"
+    }
 }

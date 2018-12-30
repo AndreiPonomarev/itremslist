@@ -9,7 +9,7 @@ import {
     CardText
 } from "mdbreact";
 
-export const Item = ({ match, ads }) => {
+export const Item = ({ match }) => {
     const [item, setItem] = useState({});
 
     const fetchItem = async () => {
