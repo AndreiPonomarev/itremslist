@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { MDBCol, MDBRow, MDBBtn } from "mdbreact";
 
+import { ItemCard } from "./ItemCard";
 
 export const ItemsList = ({ match }) => {
     const [ads, setAds] = useState([]);
@@ -20,12 +21,9 @@ export const ItemsList = ({ match }) => {
         }
     };
 
-    const changePage = direction => {
-        if (direction && totalPages > page) {
-            setPage(page + 1);
-        }
-        if (!direction && page > 1) {
-            setPage(page - 1);
+    const changePage = newPage => {
+        if (newPage >= 1 && newPage <= totalPages) {
+            setPage(newPage);
         }
     };
 
@@ -38,18 +36,32 @@ export const ItemsList = ({ match }) => {
 
     return (
         <div>
-            <h2>{page}</h2>
-            <ul>
+            <MDBRow>
                 {ads.map(item => (
-                    <li>
-                        <Link to={`${match.url}/${item.id}`}>
-                            {item.description}
-                        </Link>
-                    </li>
+                    <ItemCard match={match} item={item} key={item.id} />
                 ))}
-            </ul>
-            <button onClick={() => changePage(0)}>Prev</button>
-            <button onClick={() => changePage(1)}>Next</button>            
+            </MDBRow>
+
+            <MDBRow>
+                <MDBCol>
+                    <MDBBtn
+                        outline
+                        color="primary"
+                        size="sm"
+                        onClick={() => changePage(page - 1)}
+                    >
+                        Prev
+                    </MDBBtn>
+                    <MDBBtn
+                        outline
+                        color="primary"
+                        size="sm"
+                        onClick={() => changePage(page + 1)}
+                    >
+                        Next
+                    </MDBBtn>
+                </MDBCol>
+            </MDBRow>
         </div>
     );
 };
