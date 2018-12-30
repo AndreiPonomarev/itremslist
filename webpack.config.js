@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 
 const itemsList = require('./stub/ads.json')
+const items = itemsList.reduce((acc, val) => acc.concat(val.ads), [])
 
 module.exports = {
   entry: './src/index.js',
@@ -62,6 +63,12 @@ module.exports = {
       app.get('/api/items/', (req, res) => {
         const page = req.query.page || 1
         res.json({ data: itemsList[page-1] })
+      });
+
+      app.get('/api/item/', (req, res) => {
+        const itemId = req.query.id
+        const item = items.find(el => el.id === itemId)
+        res.json({ item })
       });
     }
   },

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import { ItemCard } from "./ItemCard";
 
 export const ItemsList = ({ match }) => {
     const [ads, setAds] = useState([]);
@@ -22,10 +21,10 @@ export const ItemsList = ({ match }) => {
     };
 
     const changePage = direction => {
-        if (direction && totalPages > page) {   // next
+        if (direction && totalPages > page) {
             setPage(page + 1);
         }
-        if (!direction && page > 1) {           // prev
+        if (!direction && page > 1) {
             setPage(page - 1);
         }
     };
@@ -50,8 +49,7 @@ export const ItemsList = ({ match }) => {
                 ))}
             </ul>
             <button onClick={() => changePage(0)}>Prev</button>
-            <button onClick={() => changePage(1)}>Next</button>
-            <Route path={`${match.path}/:id`} component={ItemCard} />
+            <button onClick={() => changePage(1)}>Next</button>            
         </div>
     );
 };

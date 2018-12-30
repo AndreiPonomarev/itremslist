@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-import { Header, ItemsList, Home } from "./components";
+import { Header, Home, ItemsPage } from "./components";
 
 import styles from "./style.css";
 
@@ -9,7 +9,7 @@ const App = () => (
     <div className={styles.app}>
         <Header />
         <Route exact path="/" component={Home} />
-        <Route exact path="/items" component={ItemsList} />
+        <Route path="/items" component={ItemsPage} />
     </div>
 );
 
